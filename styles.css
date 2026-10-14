@@ -1,0 +1,144 @@
+:root {
+  --wood: #1f120b;
+  --wood-2: #2c1a10;
+  --panel: #331e13;
+  --panel-2: #3d2417;
+  --gold: #e0bb62;
+  --gold-2: #b8913d;
+  --cream: #f4e8cc;
+  --muted: #bfa985;
+  --line: rgba(224, 187, 98, 0.32);
+  --line-soft: rgba(224, 187, 98, 0.14);
+  --league: #8fb4a6;
+  --warn: #e39a62;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    repeating-linear-gradient(92deg, rgba(255,255,255,0.012) 0 2px, transparent 2px 7px),
+    linear-gradient(180deg, var(--wood-2), var(--wood) 420px);
+  background-color: var(--wood);
+  color: var(--cream);
+  font: 16px/1.5 "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, .brand-mark {
+  font-family: "Cinzel", Georgia, "Times New Roman", serif;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); }
+h2 { font-size: 1.25rem; margin-top: 2rem; }
+h3 { font-size: 1.02rem; }
+
+.masthead {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: rgba(31, 18, 11, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  padding: 0.6rem 16px 0;
+}
+.brand { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; text-decoration: none !important; }
+.brand-mark { font-size: 1.45rem; margin: 0; }
+.brand-sub { color: var(--muted); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.nav { display: flex; gap: 0.25rem; overflow-x: auto; padding: 0.45rem 0 0.5rem; scrollbar-width: none; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  white-space: nowrap; color: var(--muted); padding: 0.3rem 0.65rem; border-radius: 999px;
+  font-size: 0.92rem; border: 1px solid transparent;
+}
+.nav a:hover { color: var(--cream); text-decoration: none; }
+.nav a.active { color: var(--wood); background: var(--gold); }
+
+.page { max-width: 1080px; margin: 0 auto; padding-block: 1.5rem 3rem; padding-inline: 16px; }
+.foot { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 1.5rem 16px calc(2rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line-soft); }
+
+.lede { color: var(--muted); max-width: 62ch; margin: 0 0 1.25rem; }
+
+/* gold-lined panel, like the boards */
+.panel {
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line-soft);
+  outline-offset: 3px;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  margin: 0 0 1.25rem;
+}
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 0 0 1.5rem; }
+.stat { border: 1px solid var(--line); border-radius: 6px; padding: 0.7rem 0.9rem; background: rgba(0,0,0,0.18); }
+.stat b { display: block; font-family: "Cinzel", Georgia, serif; color: var(--gold); font-size: 1.7rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 0.85rem; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin: 0 0 1rem; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg button {
+  background: none; border: 0; color: var(--muted); padding: 0.35rem 0.85rem; font: inherit; font-size: 0.9rem; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--gold); color: var(--wood); font-weight: 600; }
+.search {
+  width: 100%; max-width: 420px; padding: 0.6rem 0.9rem; border-radius: 6px; font: inherit;
+  background: rgba(0,0,0,0.25); color: var(--cream); border: 1px solid var(--line);
+}
+.search:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+th { color: var(--gold); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; border-bottom-color: var(--line); }
+td.num, th.num { text-align: right; }
+tr:hover td { background: rgba(224,187,98,0.04); }
+.rank { color: var(--muted); width: 2.5rem; }
+.year { font-family: "Cinzel", Georgia, serif; color: var(--gold); white-space: nowrap; }
+
+.bar { position: relative; height: 0.55rem; background: rgba(224,187,98,0.12); border-radius: 3px; min-width: 60px; }
+.bar i { position: absolute; inset: 0 auto 0 0; background: var(--gold); border-radius: 3px; }
+.bar i + i { background: var(--gold-2); }
+
+.tag {
+  display: inline-block; font-size: 0.72rem; padding: 0.05rem 0.45rem; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;
+}
+.tag.club { color: var(--gold); }
+.tag.league { color: var(--league); border-color: rgba(143,180,166,0.45); }
+.tag.honorary { color: var(--wood); background: var(--gold); border-color: var(--gold); }
+.tag.warn { color: var(--warn); border-color: rgba(227,154,98,0.5); }
+.muted { color: var(--muted); }
+.small { font-size: 0.86rem; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.card { display: block; color: inherit; }
+.card:hover { text-decoration: none; border-color: var(--gold); }
+.card h3 { margin-bottom: 0.25rem; }
+
+.decade-list { list-style: none; margin: 0; padding: 0; }
+.decade-list li { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; align-items: center; padding: 0.3rem 0; border-bottom: 1px solid var(--line-soft); }
+.decade-list li .bar { grid-column: 1 / -1; }
+
+.board-thumb img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; display: block; margin-bottom: 0.6rem; }
+.board-photo img { width: 100%; border-radius: 4px; display: block; }
+
+.player-list { columns: 3 220px; column-gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
+.player-list li { break-inside: avoid; padding: 0.2rem 0; display: flex; justify-content: space-between; gap: 0.5rem; border-bottom: 1px solid var(--line-soft); }
+
+.gap td { color: var(--muted); font-style: italic; }
+.empty { color: var(--muted); font-style: italic; }
+
+@media (max-width: 560px) {
+  th, td { padding: 0.4rem 0.4rem; }
+  .hide-sm { display: none; }
+}
